@@ -3,13 +3,26 @@ import React from 'react'
 
 const Contact = () => {
   return (
-    <div className='flex flex-col h-96 w-max mx-16 items-center justify-center my-24 border-2 rounded-2xl border-black bg-gray-300'>
-        <div className='flex flex-wrap w-1/2 gap-4 p-2'>
-        <h1 className='text-xl font-bold basis-20'>Name : </h1><span className='basis-1/2 font-semibold text-2xl text-purple-800'>Joywin Monteiro</span>
-        <h1 className='text-xl font-bold basis-20'>Email : </h1><span className='basis-1/2 font-semibold text-2xl text-purple-800'>joywinmonteiro10@gmail.com</span>
-        <h1 className='text-xl font-bold basis-20'>Contact : </h1><span className='basis-1/2 font-semibold text-2xl text-purple-800'>8296874288</span>
+        <div className='flex flex-col items-center justify-center min-h-screen bg-gray-100'>
+          <div className='w-[800px] border-2 border-black p-16 rounded-xl bg-white shadow-md'>
+            <div className='mb-4 flex gap-6'>
+              <div className='text-xl font-bold w-20'>Name</div>
+              <div className='text-xl font-bold'>:</div>
+              <div className='font-semibold text-2xl text-purple-800 ml-2'>Joywin Monteiro</div>
+            </div>
+            <div className='mb-4 flex gap-6'>
+              <div className='text-xl font-bold w-20'>Email</div>
+              <div className='text-xl font-bold'>:</div>
+              <div className='font-semibold text-2xl text-purple-800 ml-2'>joywinmonteiro10@gmail.com</div>
+            </div>
+            <div className='mb-4 flex gap-6'>
+              <div className='text-xl font-bold w-20'>Contact</div>
+              <div className='text-xl font-bold'>:</div>
+              <div className='font-semibold text-2xl text-purple-800 ml-2'>8296874288</div>
+            </div>
+          </div>
         </div>
-    </div>
+    
   )
 }
 
