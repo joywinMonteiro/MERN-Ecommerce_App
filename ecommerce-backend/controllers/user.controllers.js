@@ -1,6 +1,7 @@
 import { User } from "../models/user.models.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
+import {Product} from "../models/product.models.js"
 
 const registerUser = async (req, res) =>{
     const {username, email, password} = req.body
@@ -70,17 +71,16 @@ const userProfile = async(req, res) => {
 }
 
 
-export { registerUser, loginUser, userProfile }
+const productData = async(req, res) => {
+    try {
+        const products = await Product.find({})
+        res.json(products)
+    } catch (error) {
+        console.error("Error fetching data: ", error);
+        res.status(500).json({error: 'internal server error!!'})
+    }
+}
 
-/*const { token } = req.cookies
-    if(token){
-        jwt.verify(token, jwtSecret, async(err, decoded)=>{
-        if(err) 
-            return res.status(403).json({message: "Invalid token"})
-        const user = await User.findById(decoded.id)
-        res.json(user)
-        })  
-    }else{
-        res.json(null)
-    }   
-        */
+
+export { registerUser, loginUser, userProfile, productData }
+

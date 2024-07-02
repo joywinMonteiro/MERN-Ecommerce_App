@@ -11,7 +11,8 @@ import axios from "axios"
 import { UserContextProvider } from './context/UserContext'
 import About from './pages/About'
 import Contact from './pages/Contact'
-import Product from './pages/Product'
+import ProductDisplay from './pages/ProductDisplay'
+
 
 axios.defaults.baseURL = "http://127.0.0.1:4000/api/users";
 axios.defaults.withCredentials = true;
@@ -21,21 +22,22 @@ const App = () => {
   
   return (
     <div>
+
     <UserContextProvider>
     <Router>
       <Header />
       <Routes>
-        
         <Route path="/login" element={<Login />}/>
         <Route path="/register" element={<Register />}/>
         <Route path="/home" element={<Home />}/>
         <Route path="/about" element={<About />}/>
         <Route path="/contact" element={<Contact />}/>
-        <Route path="/product" element={<Product />}/>
+        <Route path="/product" element={<ProductDisplay />}/>
       </Routes>
       <Footer />
     </Router>
-    </UserContextProvider>  
+    </UserContextProvider> 
+
     </div>
   )
 }

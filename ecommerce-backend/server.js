@@ -32,5 +32,14 @@ import router from "./routes/user.routes.js"
 app.use("/api/users", router)
 
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+// Define __dirname using import.meta.url
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve static files from the "images" directory
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 export default app
