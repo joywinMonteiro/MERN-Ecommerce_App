@@ -1,7 +1,7 @@
 import { User } from "../models/user.models.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
-import {Product} from "../models/product.models.js"
+
 
 const registerUser = async (req, res) =>{
     const {username, email, password} = req.body
@@ -71,16 +71,8 @@ const userProfile = async(req, res) => {
 }
 
 
-const productData = async(req, res) => {
-    try {
-        const products = await Product.find({})
-        res.json(products)
-    } catch (error) {
-        console.error("Error fetching data: ", error);
-        res.status(500).json({error: 'internal server error!!'})
-    }
-}
 
 
-export { registerUser, loginUser, userProfile, productData }
+
+export { registerUser, loginUser, userProfile }
 

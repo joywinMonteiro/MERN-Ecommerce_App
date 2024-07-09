@@ -12,27 +12,41 @@ const Header = () => {
     const {user} = useContext(UserContext)
     
   return (
-      <header className='flex border-b-2 items-center mx-2 justify-between bg-gray md:flex md:flex-row sm:flex sm:flex-row'>
+      <header className='flex items-center mx-2 justify-between bg-gray '>
         <div className='flex items-center p-4 gap-2 '>
           <img src={logo} alt="logo" className='h-12 w-12' />
-          <Link to="/home"><p className='text-orange-800 text-2xl font-bold cursor-pointer'>Amazon</p></Link>
+          <Link to="/"><p className='text-orange-800 text-2xl font-bold cursor-pointer'>Amazon</p></Link>
         </div>
         
         <div>
           <ul className='flex gap-6 p-6'>
-              <Link to="/home">
+              <Link to="/">
               <li className='w-30 h-10 text-rose-700 text-xl font-medium px-2 rounded-2xl 
                   hover:cursor-pointer hover:text-gray-500  '>
                   Home
               </li>
               </Link>
 
-              <Link to="/product">
-              <li className='w-30 h-10 text-rose-700 text-xl font-medium px-2 rounded-2xl 
+                <Link to="/category/men">
+                <li className='w-30 h-10 text-rose-700 text-xl font-medium px-2 rounded-2xl 
                   hover:cursor-pointer hover:text-gray-500 '>
-                  Product
+                  Men
                 </li>
                 </Link>
+
+                <Link to="/category/women">
+                <li className='w-30 h-10 text-rose-700 text-xl font-medium px-2 rounded-2xl 
+                  hover:cursor-pointer hover:text-gray-500 '>
+                  Women
+                </li>
+                </Link>
+
+                <Link to="/category/kid">
+              <li className='w-30 h-10 text-rose-700 text-xl font-medium px-2 rounded-2xl 
+                  hover:cursor-pointer hover:text-gray-500 '>
+                  Kids
+                </li>
+                </Link>  
 
               <Link to="/contact">
               <li className='w-30 h-10 text-rose-700 text-xl font-medium px-2 rounded-2xl 

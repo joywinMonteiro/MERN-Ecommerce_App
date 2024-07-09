@@ -6,12 +6,13 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Login from './pages/Login'
 import Register from './pages/Register'
-import Home from './pages/Home'
+import Home from './components/Home'
 import axios from "axios"
 import { UserContextProvider } from './context/UserContext'
 import About from './pages/About'
 import Contact from './pages/Contact'
-import ProductDisplay from './pages/ProductDisplay'
+import Category from './components/Category'
+
 
 
 axios.defaults.baseURL = "http://127.0.0.1:4000/api/users";
@@ -27,12 +28,14 @@ const App = () => {
     <Router>
       <Header />
       <Routes>
+        <Route path="/" element={<Home />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/register" element={<Register />}/>
-        <Route path="/home" element={<Home />}/>
         <Route path="/about" element={<About />}/>
         <Route path="/contact" element={<Contact />}/>
-        <Route path="/product" element={<ProductDisplay />}/>
+        <Route path="/category/men" element={<Category category='men'/>} />
+        <Route path="/category/women" element={<Category category="women" />} />
+        <Route path="/category/kid" element={<Category category="kid" />} />
       </Routes>
       <Footer />
     </Router>
