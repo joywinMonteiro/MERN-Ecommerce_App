@@ -12,6 +12,7 @@ import { UserContextProvider } from './context/UserContext'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Category from './components/Category'
+import Cart from './components/Cart'
 
 
 
@@ -37,6 +38,7 @@ const App = () => {
         <Route path="/category/men" element={<Category category='men'/>} />
         <Route path="/category/women" element={<Category category="women" />} />
         <Route path="/category/kid" element={<Category category="kid" />} />
+        <Route path="/myCart" element={<Cart />}/>
       </Routes>
       <Footer />
     </Router>

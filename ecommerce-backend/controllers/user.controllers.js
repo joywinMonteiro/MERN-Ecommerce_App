@@ -1,6 +1,6 @@
 import { User } from "../models/user.models.js"
 import bcrypt from "bcrypt"
-import jwt from "jsonwebtoken"
+import jwt, { decode } from "jsonwebtoken"
 
 
 const registerUser = async (req, res) =>{
@@ -70,9 +70,26 @@ const userProfile = async(req, res) => {
     }
 }
 
+const authenticate = async (req, res, next) => {
+    const { token } = req.cookies;
+
+    if (!token) {
+        return res.status(401).json({ message: 'No token provided' });
+    }
+
+    try {
+        const decoded = jwt.verify(token, jwtSecret);
+        req.user = await User.findById(decoded.id).select('-password');
+        next();
+    } catch (err) {
+        console.error('JWT verification error:', err);
+        if (err.name === 'TokenExpiredError') {
+            return res.status(403).json({ message: 'Token expired' });
+        }
+        return res.status(403).json({ message: 'Invalid token' });
+    }
+};
 
 
-
-
-export { registerUser, loginUser, userProfile }
+export { registerUser, loginUser, userProfile, authenticate }
 

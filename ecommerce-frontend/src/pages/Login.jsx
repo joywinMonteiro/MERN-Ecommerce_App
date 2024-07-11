@@ -17,7 +17,7 @@ const Login = () => {
             const {data} = await axios.post('/login', {email, password})
             setUser(data)
             alert("Login Successful")
-            navigate("/home")
+            navigate("/")
         } 
         catch (error) {
             alert("Login failed!!")

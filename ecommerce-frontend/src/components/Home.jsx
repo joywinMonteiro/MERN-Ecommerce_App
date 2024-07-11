@@ -35,7 +35,7 @@ const Home = () => {
   }, [nextSlide]);
 
   return (
-    <div className='min-h-screen mt-[10px]'>
+    <div className='min-h-screen  mt-[10px]'>
       <div className="flex relative">
         <Link to="/category/men">
           <img src={banners[currentBanner].imageUrl} alt="" className='w-screen h-[400px]' />

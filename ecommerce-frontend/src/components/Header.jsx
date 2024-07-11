@@ -66,7 +66,9 @@ const Header = () => {
 
 
         <div className='relative p-3 mr-[-160px]'>
-          <img src={cartIcon} alt="" className='w-7 h-7 '/>
+          <Link to="/myCart">
+            <img src={cartIcon} alt="" className='w-7 h-7 ' />
+          </Link>
           <div className='border-2 rounded-full w-5 h-5 bg-black absolute' style={{top:'4.5px', right:'5px'}}>
             <span className='text-s text-red-900 font-bold absolute text-white' style={{top:'-4px', right:'4px'}}>{cartCount}</span>
           </div>
