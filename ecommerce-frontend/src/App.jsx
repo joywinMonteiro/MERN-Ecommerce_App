@@ -13,7 +13,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Category from './components/Category'
 import Cart from './components/Cart'
-
+import Payment from './components/Payment'
 
 
 
@@ -39,6 +39,7 @@ const App = () => {
         <Route path="/category/women" element={<Category category="women" />} />
         <Route path="/category/kid" element={<Category category="kid" />} />
         <Route path="/myCart" element={<Cart />}/>
+        <Route path="/payment" element={<Payment />}/>
       </Routes>
       <Footer />
     </Router>

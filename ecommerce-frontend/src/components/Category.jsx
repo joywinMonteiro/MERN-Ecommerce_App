@@ -36,10 +36,10 @@ const Category = ({category}) => {
 
 
   return (
-    <div className="min-h-screen  mt-[10px]">
+    <div className="min-h-screen mt-[10px]">
       <div className="flex relative">
         <Link to="/category/men">
-          <img src={banners[currentBanner].imageUrl} alt="" className="w-screen h-[400px]" />
+          <img src={banners[currentBanner].imageUrl} alt="" className="w-screen h-160px md:h-[180px] lg:h-[300px] xl:h-[400px]" />
         </Link>
 
         <img

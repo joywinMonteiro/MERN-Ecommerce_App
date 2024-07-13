@@ -12,7 +12,8 @@ const addCartItems = async (req, res) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        const cartItem = new Cart({ userId: user._id, productId, quantity, price });
+        const total_price = (quantity * price)
+        const cartItem = new Cart({ userId: user._id, productId, quantity, price, total_price });
 
         await cartItem.save();
 
@@ -52,4 +53,16 @@ const removeItem = async(req, res) => {
 }
 
 
-export { addCartItems, getCartItems, removeItem };
+const getCartCount = async (req, res) => {
+    try {
+        const userId = req.user._id; 
+        const count = await Cart.countDocuments({ userId });
+        res.json({ count });
+    } catch (error) {
+        console.log("Error: ", error);
+        res.status(500).json({ error: "Error fetching cart count" });
+    }
+}
+
+
+export { addCartItems, getCartItems, removeItem, getCartCount };

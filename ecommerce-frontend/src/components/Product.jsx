@@ -50,7 +50,7 @@ const Product = ({ category }) => {
     }
   };
 
-  const buyNow = async (productId, price) => {
+  const buyNow = async (productId, quantityToAdd, price) => {
     try {
       await addToCart(productId, 1, price);
       await axios.post(
@@ -67,7 +67,7 @@ const Product = ({ category }) => {
   };
 
   return (
-    <div className="container mx-auto my-10">
+    <div className="container mx-auto my-10 sm:w-[400px] sm:h-full md:w-[700px] lg:w-[1000px] xl:w-[1200px]">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product, index) => (
           <div
@@ -119,7 +119,7 @@ const Product = ({ category }) => {
                 </button>
                 <button
                   className="px-2 py-[4px] rounded-md font-semibold bg-green-700 hover:scale-105 "
-                  onClick={() => buyNow(product._id, product.new_price)}
+                  onClick={() => buyNow(product._id,quantity[index],  product.new_price)}
                 >
                   Buy Now
                 </button>
