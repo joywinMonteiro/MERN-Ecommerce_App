@@ -2,10 +2,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
-import { UserContext } from "../context/UserContext";
+// import { UserContext } from "../context/UserContext";
+import { Link } from "react-router-dom";
 
 const Product = ({ category }) => {
-  const { user } = useContext(UserContext);
+  // const { user } = useContext(UserContext);
   const [products, setProducts] = useState([]);
   const [quantity, setQuantity] = useState([]);
 
@@ -50,21 +51,7 @@ const Product = ({ category }) => {
     }
   };
 
-  const buyNow = async (productId, quantityToAdd, price) => {
-    try {
-      await addToCart(productId, 1, price);
-      await axios.post(
-        "/order",
-        {},
-        {
-          headers: { Authorization: `Bearer ${user.token}` },
-        }
-      );
-      alert("Order placed");
-    } catch (error) {
-      console.error("Error placing order", error);
-    }
-  };
+ 
 
   return (
     <div className="container mx-auto my-10 sm:w-[400px] sm:h-full md:w-[700px] lg:w-[1000px] xl:w-[1200px]">
@@ -117,12 +104,15 @@ const Product = ({ category }) => {
                 >
                   Add to Cart
                 </button>
+                <Link to = {`/payment/${product._id}/${quantity[index]}/${product.new_price}`} >
                 <button
                   className="px-2 py-[4px] rounded-md font-semibold bg-green-700 hover:scale-105 "
-                  onClick={() => buyNow(product._id,quantity[index],  product.new_price)}
+                  
                 >
                   Buy Now
                 </button>
+                </Link>
+                
               </div>
             </div>
           </div>

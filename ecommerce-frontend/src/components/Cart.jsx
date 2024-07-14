@@ -78,8 +78,7 @@ const Cart = () => {
                     Remove
                   </button>
                   <Link to = "/payment" className="px-2 py-[4px] text-center rounded-md font-semibold bg-green-700 hover:scale-105 text-white">
-                  <button 
-                  >
+                  <button>
                     Buy Now
                   </button>
                   </Link>

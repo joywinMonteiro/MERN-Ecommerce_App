@@ -1,6 +1,6 @@
 import braintree from "braintree"
 import dotenv from "dotenv"
-
+import { Order } from "../models/orders.models.js";
 dotenv.config()
 
 const gateway = new braintree.BraintreeGateway({
@@ -22,7 +22,7 @@ const gateway = new braintree.BraintreeGateway({
 
 
   const payment = async (req, res) => {
-    const { paymentMethodNonce, amount } = req.body;
+    const { paymentMethodNonce, amount, products } = req.body;
   
     try {
       const saleRequest = {
@@ -36,13 +36,24 @@ const gateway = new braintree.BraintreeGateway({
       const result = await gateway.transaction.sale(saleRequest);
   
       if (result.success) {
-        res.send({ success: true, transaction: result.transaction });
+        const newOrder = new Order({
+          user: req.user._id, // Assuming you have user ID in req.user
+          products,
+          amount,
+          transactionId: result.transaction.id,
+        });
+  
+        const savedOrder = await newOrder.save(); // Save order asynchronously
+  
+        res.json({ success: true, order: savedOrder });
       } else {
-        res.send({ success: false, error: result.message });
+        res.status(400).json({ success: false, error: result.message });
       }
     } catch (error) {
+      console.error("Error processing payment:", error);
       res.status(500).send(error);
     }
   };
+  
 
   export { getClientToken, payment }

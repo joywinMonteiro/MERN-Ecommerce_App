@@ -39,7 +39,7 @@ const App = () => {
         <Route path="/category/women" element={<Category category="women" />} />
         <Route path="/category/kid" element={<Category category="kid" />} />
         <Route path="/myCart" element={<Cart />}/>
-        <Route path="/payment" element={<Payment />}/>
+        <Route path="/payment/:productId/:quantity/:price" element={<Payment />}/>
       </Routes>
       <Footer />
     </Router>
